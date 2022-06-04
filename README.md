@@ -14,6 +14,9 @@ Web application used for creating school tests. The application is able to creat
 - Laravel Framework 8.83.15
 - Bootstrap 4
 
+## Laravel's libraries used
+- laravel-dompdf
+
 ## License & Copyright
 
 <div align="center">
