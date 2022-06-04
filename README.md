@@ -8,7 +8,7 @@
 Web application used for creating school tests. The application is able to create tests based on the subject and the selected questions (previously created by the user). The test is generated with or without solutions, to the user's liking. 
 
 ## Tools used
-- Visual Studio Code 1.67.2
+- Visual Studio Code
 - GitHub Desktop 
 - Quick Admin Panel
 - Laravel Framework 8.83.15
