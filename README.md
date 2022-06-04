@@ -10,6 +10,7 @@ Web application used for creating school tests. The application is able to creat
 ## Tools used
 - Visual Studio Code
 - GitHub Desktop 
+- Laragon 5.0.0
 - Quick Admin Panel
 - Laravel Framework 8.83.15
 - Bootstrap 4

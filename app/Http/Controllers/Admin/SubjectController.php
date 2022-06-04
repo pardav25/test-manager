@@ -12,6 +12,8 @@ use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
+use App\Models\User;
 
 class SubjectController extends Controller
 {
@@ -21,7 +23,25 @@ class SubjectController extends Controller
     {
         abort_if(Gate::denies('subject_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subjects = Subject::all();
+        // The current user is admin? >0 No
+        $res = User::join('role_user','user_id', '=', 'users.id')
+                    ->where('users.id',Auth::user()->id)
+                    ->where('role_user.role_id', 2)
+                    ->count();
+
+        if ($res > 0)
+        {
+            // The user can only see his subjects
+            $subjects = User::join('subject_user', 'user_id', '=', 'users.id')
+                            ->join('subjects', 'subject_id', '=', 'subjects.id')
+                            ->where('users.id',Auth::user()->id)
+                            ->get();
+        }
+        else
+        {
+            // Admin can see all
+            $subjects = Subject::all();
+        }
 
         return view('admin.subjects.index', compact('subjects'));
     }
