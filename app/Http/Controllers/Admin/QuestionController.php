@@ -56,7 +56,7 @@ class QuestionController extends Controller
 
         $types = Type::pluck('type', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.questions.create', compact('subjects', 'types'));
+        return view('admin.questions.creator', compact('subjects', 'types'));
     }
 
     public function store(StoreQuestionRequest $request)
